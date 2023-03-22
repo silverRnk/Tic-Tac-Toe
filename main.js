@@ -22,6 +22,4 @@ document.querySelector('#app').innerHTML = `
   </div>
 `
 
-fooHandler(document.querySelector('#foo'))
-
 setupCounter(document.querySelector('#counter'))
