@@ -31,46 +31,37 @@ const checkForVerticalWinningCombination = (
 
 const checkForHorizontalWinningCombination = (
   array,
-  player,
-  initRow
+  player
 ) => {
   /*
        get an 2d array then check if a row x has same value type x
        [][] number type -> bool
        */
-  const checkAtRow = (array, x, row) => {
-    const rowToCheck = array[row];
-    const checkIfRowValueMatch = (array1, type) => {
-      if (array1.length == 0) {
-        console.log(array1);
-        console.log(true);
-        return true;
-      } else {
-        console.log(array1);
-        console.log("x");
-        console.log(array1[0] === type);
-        console.log(array1.slice(1));
-        return (
-          array1[0] === type &&
-          checkIfRowValueMatch(array1.slice(1), type)
-        );
-      }
-    };
-    return checkIfRowValueMatch(rowToCheck, x);
-  };
 
-  if (array.length < initRow) {
+
+  if (array.length == 0) {
     return false;
   } else {
-    console.log(`Row:${initRow}`);
+    console.log(array.length)
     return (
-      checkAtRow(array, player.type, initRow) ||
-      checkForHorizontalWinningCombination(array, player, initRow + 1)
+      checkAtRow(array[0], player.type) ||
+      checkForHorizontalWinningCombination(array.slice(1), player)
     );
+  }
+};
+
+const checkAtRow = (array, x) => {
+  console.log(array)
+  if (array.length == 0) {
+    return true;
+  } else {
+    let y = (array[0] == x && checkAtRow(array.slice(1), x));
+    return y
   }
 };
 
 export {
   checkForVerticalWinningCombination,
   checkForHorizontalWinningCombination,
+  checkAtRow
 };
