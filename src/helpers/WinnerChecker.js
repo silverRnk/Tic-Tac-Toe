@@ -55,7 +55,12 @@ const checkForHorizontalWinningCombination = (array, player) => {
   };
 };
 
+const checkForDiagonalWinningCondition = (array, player) => {
+  return false
+}
+
 export {
   checkForVerticalWinningCombination,
   checkForHorizontalWinningCombination,
+  checkForDiagonalWinningCondition
 };
