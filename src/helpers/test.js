@@ -1,4 +1,4 @@
-import {checkForHorizontalWinningCombination, checkAtRow } from "./WinnerCheckr";
+import {checkForHorizontalWinningCombination, checkAtRow } from "./WinnerChecker";
 
 const testCase1 = [['x', 'x', 'y'], ['s', 's', 's'], ['z', 'z', 'z']]
 const testCase2 = [['x', 'x', 'y'], ['s', 's', 's'], ['z', 'z', 'n']]
