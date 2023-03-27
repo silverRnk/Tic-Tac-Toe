@@ -6,6 +6,7 @@ const testCase2 = [['x', 'y', 'z'], ['x', 'y', 'z'], ['x', 'y', 'z']]
 const testCase3 = [[], [], []]
 const testCase4 = []
 
+
 test('If empty array', () => {
     expect(checkForHorizontalWinningCombination(testCase4, {name: 'foo', type:'f'})).toBe(false)
 })
