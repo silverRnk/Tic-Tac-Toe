@@ -1,4 +1,5 @@
 import {
+  checkForDiagonalWinningCondition,
   checkForHorizontalWinningCombination,
   checkForVerticalWinningCombination,
 } from "./helpers/WinnerChecker";
@@ -19,12 +20,14 @@ function board() {
   const checkForWinner = (player1, player2) => {
     if (
       checkForVerticalWinningCombination(board, player1, 0) &&
-      checkForHorizontalWinningCombination(board, player1)
+      checkForHorizontalWinningCombination(board, player1) &&
+      checkForDiagonalWinningCondition(board, player1)
     ) {
       console.log("Winner Player 1");
     } else if (
       checkForVerticalWinningCombination(board, player2, 0) &&
-      checkForHorizontalWinningCombination(board, player2)
+      checkForHorizontalWinningCombination(board, player2) &&
+      checkForDiagonalWinningCondition(board, player2)
     ) {
       console.log("Winner Player 2");
     }
