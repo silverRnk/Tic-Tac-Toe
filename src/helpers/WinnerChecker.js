@@ -56,7 +56,14 @@ const checkForHorizontalWinningCombination = (array, player) => {
 };
 
 const checkForDiagonalWinningCondition = (array, player) => {
-  return false
+  const type = player.type
+  if((array.length == 0) || (array[0].length == 0)){
+    return false
+  }
+
+  const firstDiagonal = (array[0][0] == type) && (array[1][1] == type) && (array[2][2] == type);
+  const secondDiagonal = (array[0][2] == type) && (array[1][1] == type) && (array[2][0] == type);
+  return firstDiagonal || secondDiagonal
 }
 
 export {
