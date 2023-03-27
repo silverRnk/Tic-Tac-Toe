@@ -29,39 +29,33 @@ const checkForVerticalWinningCombination = (
   }
 };
 
-const checkForHorizontalWinningCombination = (
-  array,
-  player
-) => {
+const checkForHorizontalWinningCombination = (array, player) => {
   /*
        get an 2d array then check if a row x has same value type x
        [][] number type -> bool
        */
+  const checkAtRow = (array, x) => {
+    console.log(array);
+    if (array.length == 0) {
+      return true;
+    } else {
+      let y = array[0] == x && checkAtRow(array.slice(1), x);
+      return y;
+    }
 
-
-  if (array.length == 0) {
-    return false;
-  } else {
-    console.log(array.length)
-    return (
-      checkAtRow(array[0], player.type) ||
-      checkForHorizontalWinningCombination(array.slice(1), player)
-    );
-  }
-};
-
-const checkAtRow = (array, x) => {
-  console.log(array)
-  if (array.length == 0) {
-    return true;
-  } else {
-    let y = (array[0] == x && checkAtRow(array.slice(1), x));
-    return y
-  }
+    if (array.length == 0) {
+      return false;
+    } else {
+      console.log(array.length);
+      return (
+        checkAtRow(array[0], player.type) ||
+        checkForHorizontalWinningCombination(array.slice(1), player)
+      );
+    }
+  };
 };
 
 export {
   checkForVerticalWinningCombination,
   checkForHorizontalWinningCombination,
-  checkAtRow
 };
