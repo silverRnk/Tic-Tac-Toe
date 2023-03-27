@@ -1,7 +1,7 @@
 import {
   checkForHorizontalWinningCombination,
   checkForVerticalWinningCombination,
-} from "./helpers/WinnerCheckr";
+} from "./helpers/WinnerChecker";
 
 function board() {
   const board = [
