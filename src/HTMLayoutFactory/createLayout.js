@@ -1,6 +1,26 @@
 import "./style.css"
 
 function CreateLayout(){
+
+    const createRootElement = (element) => {
+      element.innerHTML = `
+      <div id="set-player-card"></div>
+      <h1>Tik Tac Toe</h1>
+          <div id="player-selection">
+              <div id="player1-name">
+              <h2 class="name">player 1</h2>
+              <div class="select"><img src=${blank} alt="" /></div>
+              </div>
+              <div id="player2-name">
+              <h2 class="name">player 2</h2>
+              <div class="select"><img src=${blank} alt="" /></div>
+              </div> 
+                </div>
+                <div class="content">
+                </div>
+      `;
+    }
+
     const playerSelectionCard = (element) => {
         element.innerHTML = `
         <form action="">
@@ -56,7 +76,7 @@ function CreateLayout(){
             
     }
 
-    return {playerSelectionCard, createTicTakToeBoard}
+    return {createRootElement, playerSelectionCard, createTicTakToeBoard}
 }
 
 export {CreateLayout}
