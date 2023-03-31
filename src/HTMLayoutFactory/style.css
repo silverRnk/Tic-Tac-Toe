@@ -1,0 +1,19 @@
+form{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-rows: 1fr 1fr 100px;
+}
+
+.player-name{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+.player-name input {
+    margin-left: 10px;
+    width: 90%;
+    padding: 5px;
+    font-size: 1.1rem;
+}
