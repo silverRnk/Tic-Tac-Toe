@@ -3,6 +3,7 @@ import {
   checkForHorizontalWinningCombination,
   checkForVerticalWinningCombination,
 } from "./helpers/WinnerChecker";
+import player from "./player";
 import close from "./assets/close.svg";
 import circle from "./assets/circle.svg";
 
@@ -12,6 +13,7 @@ function board() {
     ["", "", ""],
     ["", "", ""],
   ];
+
   const pieces = [
     {
       type: "x",
@@ -20,66 +22,139 @@ function board() {
       },
     },
     {
-      type:'o',
-      element:() => {
-        return `<img src=${circle} alt="circle" />`
-      }
-    }
+      type: "o",
+      element: () => {
+        return `<img src=${circle} alt="circle" />`;
+      },
+    },
   ];
+  const player1 = player("Player1", pieces[0]);
+  const player2 = player("Player2", pieces[1]);
+  let boardDOM = null;
+  let playerPieceSelector = null;
   let endOfGame = false;
   let isBoardCreated = false;
   let isGameStarted = false;
 
-  const makeAMove = (col, row, type) => {
-    board[row - 1][col - 1] = type;
+  player1.isTurn = true;
+
+  /**
+   * @param {number} col 
+   * @param {number} row 
+   * @param {HtmlElement} element 
+   * @returns 
+   */
+  //take the row and col of cell to add a marking
+  // depending on who's turn its marking would be add
+  const makeAMove = (col, row, element) => {
+    if (
+      board[row - 1][col - 1] || endOfGame) {
+      return;
+    }
+
+    if (boardDOM) {
+      if (player1.isTurn) {
+        board[row - 1][col - 1] = player1.getPiece().type;
+        // boardDOM.querySelector(`#${row}${col}`).innerHTML = player1
+        //   .getPiece()
+        //   .element();
+        element.innerHTML = player1.getPiece().element();
+        player1.isTurn = false;
+        player2.isTurn = true;
+      } else if (player2.isTurn) {
+        board[row - 1][col - 1] = player2.getPiece().type;
+        // boardDOM.querySelector(`#${row}${col}`).innerHTML = player2
+        //   .getPiece()
+        //   .element();
+        element.innerHTML = player2.getPiece().element();
+        player1.isTurn = true;
+        player2.isTurn = false;
+      }
+    }
   };
 
   const getBoard = () => {
     return board;
   };
 
-  const createTheBoard = (element) => {
-    if (!isBoardCreated) {
-      element.innerHTML = `
-    <div class="board">
-      <div class="cell-item" id="11"></div>
-      <div class="cell-item" id="12"></div>
-      <div class="cell-item" id="13"></div>
-      <div class="cell-item" id="21"></div>
-      <div class="cell-item" id="22"></div>
-      <div class="cell-item" id="23"></div>
-      <div class="cell-item" id="31"></div>
-      <div class="cell-item" id="32"></div>
-      <div class="cell-item" id="33"></div>
-    </div>
-    `;
-      isBoardCreated = true;
+  /**
+   *
+   * @param {HTMLElement} element
+   */
+  const getBoardDOM = (element) => {
+    console.log(element);
+    boardDOM = element;
+  };
+
+  const enBoardDOM = () => {
+    if (boardDOM) {
+      let arrayBoardDOM = Array.from(boardDOM);
+      arrayBoardDOM.forEach((cell) => {
+        cell.addEventListener("click", (e) => {
+          console.log(e);
+          let rowCols = e.target.id.split("");
+          console.log(rowCols);
+          makeAMove(Number(rowCols[1]), Number(rowCols[0]), e.target);
+        });
+      });
     }
   };
 
-  const gameStart = (element) => {
-    element.addEventListener('click', () => {
-      isGameStarted = true
-      element
-    })
+  /**
+   * 
+   * @param {HTMLElement} element 
+   */
+  const getPlayerPieceSelection = (element) => {
+    if(!playerPieceSelector){
+      playerPieceSelector = element
+    }
+
+    if(playerPieceSelector){
+
+    }
   }
 
+  const enPlayerPieceSelector = () => {
+    playerPieceSelector.querySelector('#player1-name')
+  }
+
+
+
+  const gameStart = (element) => {
+    element.addEventListener("click", () => {
+      isGameStarted = true;
+      element;
+    });
+  };
+
+  /**
+   * 
+   * @param {Player} player1 
+   * @param {Player} player2 
+   */
   const checkForWinner = (player1, player2) => {
     if (
       checkForVerticalWinningCombination(board, player1, 0) &&
       checkForHorizontalWinningCombination(board, player1) &&
       checkForDiagonalWinningCondition(board, player1)
     ) {
-      console.log("Winner Player 1");
+      alert('Winner Player 1');
     } else if (
       checkForVerticalWinningCombination(board, player2, 0) &&
       checkForHorizontalWinningCombination(board, player2) &&
       checkForDiagonalWinningCondition(board, player2)
     ) {
-      console.log("Winner Player 2");
+      alert('Winner Player 2')
     }
   };
-  return { makeAMove, getBoard, checkForWinner, createTheBoard };
+  return {
+    makeAMove,
+    getBoard,
+    checkForWinner,
+    getBoardDOM,
+    enBoardDOM,
+    pieces,
+  };
 }
 
 export default board;
