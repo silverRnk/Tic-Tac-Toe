@@ -23,7 +23,7 @@ const checkForVerticalWinningCombination = (
   } else {
     console.log(initCol);
     return (
-      checkAtColumn(array, initCol, player.type) ||
+      checkAtColumn(array, initCol, player.getPiece().type) ||
       checkForVerticalWinningCombination(array, player, initCol + 1)
     );
   }
@@ -42,21 +42,22 @@ const checkForHorizontalWinningCombination = (array, player) => {
       let y = array[0] == x && checkAtRow(array.slice(1), x);
       return y;
     }
+  }
 
     if (array.length == 0) {
       return false;
     } else {
       console.log(array.length);
       return (
-        checkAtRow(array[0], player.type) ||
+        checkAtRow(array[0], player.getPiece().type) ||
         checkForHorizontalWinningCombination(array.slice(1), player)
       );
     }
-  };
 };
 
+
 const checkForDiagonalWinningCondition = (array, player) => {
-  const type = player.type
+  const type = player.getPiece().type
   if((array.length == 0) || (array[0].length == 0)){
     return false
   }
