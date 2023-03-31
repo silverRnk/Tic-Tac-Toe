@@ -8,7 +8,7 @@ function CreateLayout(){
     const createRootElement = (element) => {
       element.innerHTML = `
       <div id="set-player-card"></div>
-      <h1>Tik Tac Toe</h1>
+      <h1>Tic Tac Toe</h1>
           <div id="player-selection">
               <div id="player1-name">
               <h2 class="name">player 1</h2>
