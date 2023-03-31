@@ -3,23 +3,26 @@ import javascriptLogo from "./javascript.svg";
 import viteLogo from "/vite.svg";
 import { setupCounter } from "./counter.js";
 import player from "./src/player";
-import board from "./src/board";
+import blank from "./src/assets/blank.svg"
+import {board} from "./src/board";
 import { CreateLayout } from "./src/HTMLayoutFactory/createLayout";
+import CardHandler from "./src/CardHandler";
 
 const htmlLayoutFactory = CreateLayout()
 const gameBoard = board();
+const cardHandler = CardHandler()
 
 document.querySelector("#app").innerHTML = `
 <div id="set-player-card"></div>
 <h1>Tik Tac Toe</h1>
     <div id="player-selection">
-        <div>
-        <label for="player1-piece">player 1</label>
-        <div class="select"></div>
+        <div id="player1-name">
+        <h2 class="name">player 1</h2>
+        <div class="select"><img src=${blank} alt="" /></div>
         </div>
-        <div>
-        <label for="player1-piece">player 2</label>
-        <div class="select"></div>
+        <div id="player2-name">
+        <h2 class="name">player 2</h2>
+        <div class="select"><img src=${blank} alt="" /></div>
         </div> 
           </div>
           <div class="content">
@@ -29,8 +32,12 @@ document.querySelector("#app").innerHTML = `
 htmlLayoutFactory.playerSelectionCard(document
   .querySelector('#set-player-card'))
 htmlLayoutFactory.createTicTakToeBoard(document.
-  querySelector(".content"))
-
+  querySelector(".content"));
 gameBoard.getBoardDOM(document.querySelectorAll(".cell-item"));
+gameBoard.setBoardSetAnnouncementDisplay(document.querySelector("#player-selection"))
+cardHandler.setPlayerSelectionCard(document.querySelector('#set-player-card'))
+cardHandler.setPlayerSetting(gameBoard.setPlayers)
+
+
 gameBoard.enBoardDOM();
 // setupCounter(document.querySelector('#counter'))

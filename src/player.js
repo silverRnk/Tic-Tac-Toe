@@ -23,7 +23,7 @@ function player(name, type) {
     type = piece
   }
 
-  return { name, getPiece, setPiece ,isTurn };
+  return { name, getPiece , setPiece ,isTurn };
 }
 
 export default player;

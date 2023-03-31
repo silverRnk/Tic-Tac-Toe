@@ -5,6 +5,12 @@ form{
     grid-template-rows: 1fr 1fr 100px;
 }
 
+.player-selection{
+    display: flex;
+    flex-direction: column;
+    gap: 15px
+}
+
 .player-name{
     display: flex;
     flex-direction: column;
@@ -16,4 +22,13 @@ form{
     width: 90%;
     padding: 5px;
     font-size: 1.1rem;
+}
+
+.piece-selection>div{
+    display: flex;
+}
+
+.piece-selection label{
+    margin-left: 2px;
+    margin-right: 6px;
 }

@@ -7,6 +7,18 @@ import player from "./player";
 import close from "./assets/close.svg";
 import circle from "./assets/circle.svg";
 
+const pieces = [
+  {
+    type: "x",
+    element: `<img src=${close} alt="close" />`,
+  },
+  {
+    type: "o",
+    element: `<img src=${circle} alt="circle" />`
+    },
+  ,
+];
+
 function board() {
   const board = [
     ["", "", ""],
@@ -14,29 +26,19 @@ function board() {
     ["", "", ""],
   ];
 
-  const pieces = [
-    {
-      type: "x",
-      element: () => {
-        return `<img src=${close} alt="close" />`;
-      },
-    },
-    {
-      type: "o",
-      element: () => {
-        return `<img src=${circle} alt="circle" />`;
-      },
-    },
-  ];
-  const player1 = player("Player1", pieces[0]);
-  const player2 = player("Player2", pieces[1]);
+  let player1, player2;
   let boardDOM = null;
-  let playerPieceSelector = null;
+  let announcementDOM = null;
   let endOfGame = false;
-  let isBoardCreated = false;
   let isGameStarted = false;
 
-  player1.isTurn = true;
+  const setPlayers = (p1, p2) =>{
+    player1 = p1
+    player2 = p2;
+    player1.isTurn = true;
+    displayNames();
+    isGameStarted = true;
+  }
 
   /**
    * @param {number} col 
@@ -58,7 +60,7 @@ function board() {
         // boardDOM.querySelector(`#${row}${col}`).innerHTML = player1
         //   .getPiece()
         //   .element();
-        element.innerHTML = player1.getPiece().element();
+        element.innerHTML = player1.getPiece().element;
         player1.isTurn = false;
         player2.isTurn = true;
       } else if (player2.isTurn) {
@@ -66,7 +68,7 @@ function board() {
         // boardDOM.querySelector(`#${row}${col}`).innerHTML = player2
         //   .getPiece()
         //   .element();
-        element.innerHTML = player2.getPiece().element();
+        element.innerHTML = player2.getPiece().element;
         player1.isTurn = true;
         player2.isTurn = false;
       }
@@ -100,25 +102,27 @@ function board() {
     }
   };
 
-  /**
-   * 
-   * @param {HTMLElement} element 
-   */
-  const getPlayerPieceSelection = (element) => {
-    if(!playerPieceSelector){
-      playerPieceSelector = element
-    }
-
-    if(playerPieceSelector){
-
-    }
-  }
 
   const enPlayerPieceSelector = () => {
     playerPieceSelector.querySelector('#player1-name')
   }
 
 
+  const setBoardSetAnnouncementDisplay = (element) => {
+    announcementDOM = element
+  }
+
+  const displayNames = () => {
+    let player1NameDOM, player2NameDOM;
+    player1NameDOM = announcementDOM.querySelector('#player1-name')
+    player2NameDOM = announcementDOM.querySelector('#player2-name')
+
+    player1NameDOM.querySelector('.name').innerHTML = player1.name;
+    player1NameDOM.querySelector('.select').innerHTML = player1.getPiece().element;
+  
+    player2NameDOM.querySelector('.name').innerHTML = player2.name;
+    player2NameDOM.querySelector('.select').innerHTML = player2.getPiece().element;
+  }
 
   const gameStart = (element) => {
     element.addEventListener("click", () => {
@@ -147,14 +151,18 @@ function board() {
       alert('Winner Player 2')
     }
   };
+
+
+
   return {
     makeAMove,
     getBoard,
     checkForWinner,
     getBoardDOM,
     enBoardDOM,
-    pieces,
+    setPlayers,
+    setBoardSetAnnouncementDisplay
   };
 }
 
-export default board;
+export {pieces, board}

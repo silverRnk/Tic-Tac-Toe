@@ -7,14 +7,14 @@ function CreateLayout(){
           <div class="player-selection" id="player1">
             <div class="player-name">
               <label for="player-1">Player 1:</label>
-              <input type="text" name="player-1" id="player-1" required />
+              <input class="player-name" type="text" name="player-1" id="player-1" required />
             </div>
             <div class="piece-selection">
               <legend for="piece">Select Your Piece:</legend>
               <div>
                 <input type="radio" name="piece-1" id="piece-x" value="x" checked>
                 <label for="piece-x">x</label>
-                <input type="radio" name="piece-1" id="piece-o" value="x">
+                <input type="radio" name="piece-1" id="piece-o" value="o">
                 <label for="piece-o">o</label>
               </div>
               </div>
@@ -22,14 +22,14 @@ function CreateLayout(){
             <div class="player-selection" id="player2">
               <div class="player-name">
                 <label for="player-1">Player 2:</label>
-                <input type="text" name="player-1" id="player-1" required />
+                <input class="player-name" type="text" name="player-2" id="player-2" required />
               </div>
               <div class="piece-selection">
                 <legend for="piece">Select Your Piece:</legend>
                 <div>
                   <input type="radio" name="piece-2" id="piece-x" value="x">
                   <label for="piece-x">x</label>
-                  <input type="radio" name="piece-2" id="piece-o" value="x" checked>
+                  <input type="radio" name="piece-2" id="piece-o" value="o" checked>
                   <label for="piece-o">o</label>
                 </div>
                 </div>
