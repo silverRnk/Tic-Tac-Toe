@@ -63,6 +63,7 @@ function board() {
         element.innerHTML = player1.getPiece().element;
         player1.isTurn = false;
         player2.isTurn = true;
+        
       } else if (player2.isTurn) {
         board[row - 1][col - 1] = player2.getPiece().type;
         // boardDOM.querySelector(`#${row}${col}`).innerHTML = player2
@@ -73,6 +74,7 @@ function board() {
         player2.isTurn = false;
       }
     }
+
   };
 
   const getBoard = () => {
@@ -97,6 +99,10 @@ function board() {
           let rowCols = e.target.id.split("");
           console.log(rowCols);
           makeAMove(Number(rowCols[1]), Number(rowCols[0]), e.target);
+          setTimeout(() => {
+            checkForWinner();
+          }, 100)
+          
         });
       });
     }
@@ -136,20 +142,30 @@ function board() {
    * @param {Player} player1 
    * @param {Player} player2 
    */
-  const checkForWinner = (player1, player2) => {
+  const checkForWinner = () => {
     if (
-      checkForVerticalWinningCombination(board, player1, 0) &&
-      checkForHorizontalWinningCombination(board, player1) &&
+      checkForVerticalWinningCombination(board, player1, 0) ||
+      checkForHorizontalWinningCombination(board, player1) ||
       checkForDiagonalWinningCondition(board, player1)
     ) {
       alert('Winner Player 1');
     } else if (
-      checkForVerticalWinningCombination(board, player2, 0) &&
-      checkForHorizontalWinningCombination(board, player2) &&
+      checkForVerticalWinningCombination(board, player2, 0) ||
+      checkForHorizontalWinningCombination(board, player2) ||
       checkForDiagonalWinningCondition(board, player2)
     ) {
-      alert('Winner Player 2')
+      alert('Winner Player 2');
+      
+    } else{
+      if(player1.isTurn){
+        alert(`${player1.name} turn`)
+      }else{
+        alert(`${player2.name} turn`)
+      }
+      return
     }
+
+    endOfGame = true;
   };
 
 
