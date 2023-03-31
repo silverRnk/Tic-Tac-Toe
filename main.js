@@ -1,8 +1,4 @@
 import "./style.css";
-import javascriptLogo from "./javascript.svg";
-import viteLogo from "/vite.svg";
-import { setupCounter } from "./counter.js";
-import player from "./src/player";
 import blank from "./src/assets/blank.svg"
 import {board} from "./src/board";
 import { CreateLayout } from "./src/HTMLayoutFactory/createLayout";
