@@ -19,7 +19,7 @@ const pieces = [
   ,
 ];
 
-function board() {
+function BoardHandler() {
   const board = [
     ["", "", ""],
     ["", "", ""],
@@ -181,4 +181,4 @@ function board() {
   };
 }
 
-export {pieces, board}
+export {pieces, BoardHandler}
