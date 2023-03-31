@@ -1,34 +1,83 @@
-form{
-    width: 100%;
-    height: 100%;
-    display: grid;
-    grid-template-rows: 1fr 1fr 100px;
+form {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-rows: 1fr 1fr 100px;
+  gap: 15px;
 }
 
-.player-selection{
-    display: flex;
-    flex-direction: column;
-    gap: 15px
+.player-selection {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-.player-name{
-    display: flex;
-    flex-direction: column;
-    align-items: start;
+.player-name {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
 }
 
 .player-name input {
-    margin-left: 10px;
-    width: 90%;
-    padding: 5px;
-    font-size: 1.1rem;
+  margin-left: 10px;
+  width: 90%;
+  padding: 5px;
+  font-size: 1.1rem;
 }
 
-.piece-selection>div{
-    display: flex;
+.piece-selection > div {
+  display: flex;
 }
 
-.piece-selection label{
-    margin-left: 2px;
-    margin-right: 6px;
+.piece-selection label {
+  margin-left: 2px;
+  margin-right: 6px;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+#selector {
+  width: 100%;
+  height: 50px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+#selector label {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  width: 90%;
+  border: 1px solid black;
+  border-radius: 10px;
+  justify-self: center;
+  align-self: center;
+  cursor: pointer;
+}
+
+#player1-piece-x:checked ~ #selector label:first-child,
+#player1-piece-o:checked ~ #selector label:last-child{
+  background-color: gray;
+}
+
+#player2-piece-x:checked ~ #selector label:first-child,
+#player2-piece-o:checked ~ #selector label:last-child{
+    background-color: gray;
+}
+
+button[type="submit"]{
+    width: 150px;
+    height: 70%;
+    align-self:center;
+    justify-self: center;
+    border-radius: 10px;
+    font-size: 1.25rem;
+    cursor: pointer;
+}
+
+button[type="submit"]:active{
+    background-color: gray;
 }
