@@ -38,6 +38,7 @@ function BoardHandler() {
     player1.isTurn = true;
     displayNames();
     isGameStarted = true;
+    enBoardDOM();
   }
 
   /**
@@ -175,7 +176,6 @@ function BoardHandler() {
     getBoard,
     checkForWinner,
     getBoardDOM,
-    enBoardDOM,
     setPlayers,
     setBoardSetAnnouncementDisplay
   };

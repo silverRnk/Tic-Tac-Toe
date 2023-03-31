@@ -18,6 +18,4 @@ boardHandler.setBoardSetAnnouncementDisplay(document.querySelector("#player-sele
 cardHandler.setPlayerSelectionCard(document.querySelector('#set-player-card'))
 cardHandler.setPlayerSetting(boardHandler.setPlayers)
 
-
-boardHandler.enBoardDOM();
 // setupCounter(document.querySelector('#counter'))
