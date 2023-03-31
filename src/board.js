@@ -148,19 +148,19 @@ function BoardHandler() {
       checkForHorizontalWinningCombination(board, player1) ||
       checkForDiagonalWinningCondition(board, player1)
     ) {
-      alert('Winner Player 1');
+      alert(`Winner ${player1.name}`);
     } else if (
       checkForVerticalWinningCombination(board, player2, 0) ||
       checkForHorizontalWinningCombination(board, player2) ||
       checkForDiagonalWinningCondition(board, player2)
     ) {
-      alert('Winner Player 2');
+      alert(`Winner ${player2.name}`);
       
     } else{
       if(player1.isTurn){
-        alert(`${player1.name} turn`)
+        alert(`${player1.name}'s turn`)
       }else{
-        alert(`${player2.name} turn`)
+        alert(`${player2.name}'s turn`)
       }
       return
     }
