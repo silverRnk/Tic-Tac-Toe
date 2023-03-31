@@ -1,4 +1,7 @@
 import "./style.css"
+import blank from "../assets/blank.svg"
+import close from "../assets/close.svg"
+import circle from "../assets/circle.svg"
 
 function CreateLayout(){
 
@@ -32,10 +35,32 @@ function CreateLayout(){
             <div class="piece-selection">
               <legend for="piece">Select Your Piece:</legend>
               <div>
-                <input type="radio" name="piece-1" id="piece-x" value="x" checked>
-                <label for="piece-x">x</label>
-                <input type="radio" name="piece-1" id="piece-o" value="o">
-                <label for="piece-o">o</label>
+              <!--
+                // <input type="radio" name="piece-1" id="player1-piece-x" value="x" checked>
+                // <label for="piece-x">x</label>
+                // <input type="radio" name="piece-1" id="player1-piece-o" value="o">
+                
+                // <label for="piece-o">o</label> -->
+                <input
+                type="radio"
+                name="piece-1"
+                id="player1-piece-x"
+                value="x"
+                checked
+              />
+          
+              <input
+                type="radio"
+                name="piece-1"
+                id="player1-piece-o"
+                value="o"
+              />
+          
+              <div id="selector">
+                  <label for="player1-piece-x"><img src=${close} alt="close" /></label>
+                  <label for="player1-piece-o"><img src=${circle} alt="circle" /></label>
+              </div>
+    
               </div>
               </div>
             </div>
@@ -47,10 +72,33 @@ function CreateLayout(){
               <div class="piece-selection">
                 <legend for="piece">Select Your Piece:</legend>
                 <div>
+                <!--
                   <input type="radio" name="piece-2" id="piece-x" value="x">
                   <label for="piece-x">x</label>
                   <input type="radio" name="piece-2" id="piece-o" value="o" checked>
-                  <label for="piece-o">o</label>
+                  <label for="piece-o">o</label> -->
+
+                  <input
+                  type="radio"
+                  name="piece-2"
+                  id="player2-piece-x"
+                  value="x"
+                />
+            
+                <input
+                  type="radio"
+                  name="piece-2"
+                  id="player2-piece-o"
+                  value="o"
+                  checked
+                />
+            
+                <div id="selector">
+                    <label for="player2-piece-x"><img src=${close} alt="close" /></label>
+                    <label for="player2-piece-o"><img src=${circle} alt="circle" /></label>
+                </div>
+
+
                 </div>
                 </div>
               </div>
