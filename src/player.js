@@ -3,7 +3,8 @@
  * @param {string} name
  * @param {{type:string, element:string}} type
  * @returns {{ name:string,
- *  type:{ type:string, element:string},
+ *  getPiece:() => { type:string, element:string},
+ *  setPiece: () => void,
  *  isTurn:Boolean }}
  */
 
@@ -14,7 +15,15 @@ function player(name, type) {
     array[index] = type;
   };
 
-  return { name, type, isTurn };
+  const getPiece = () => {
+    return type
+  }
+
+  const setPiece = (piece) => {
+    type = piece
+  }
+
+  return { name, getPiece, setPiece ,isTurn };
 }
 
 export default player;
