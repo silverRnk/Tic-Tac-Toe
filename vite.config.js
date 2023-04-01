@@ -2,5 +2,5 @@
 import { defineConfig } from 'vite'
 
 export default defineConfig({
- base: 'Tic-Tak-Toe',
+ base: 'Tic-Tac-Toe',
 })
