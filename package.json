@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://silverRnk.github.io/Tic-Tak-Toe/",
+  "homepage": "https://silverrnk.github.io/Tic-Tac-Toe/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
